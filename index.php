@@ -23,22 +23,20 @@ $prodotti = [
 ];
 
 var_dump($prodotti);
-class Utenti extends Prodotti {
-    function __construct(string $name, string $model, int $price, int $qty, string $weight)
-    {
-        parent::__construct(string $name, string $model, int $price, int $qty, string $weight),
-        $this->price = $price;
-    }
-}
 
-class Utenti {
-    protected $name;
-    protected $premium;
+
+class Utenti extends Prodotti {
+    public $name;
+    public $premium;
     
     function __construct(string $name, bool $premium)
-    {
+       {
         $this->name = $name;
         $this->premium = $premium;
+        if ($this->premium = true){
+            $this->price = $price / 15 * 100;
+            var_dump($price);
+        }
     }
 
 }
@@ -48,6 +46,14 @@ $users = [
 
 
 
+/* class Utenti extends Prodotti {
+    function __construct(string $name, string $model, int $price, int $qty, string $weight, $price)
+    {
+        parent::__construct(string $name, string $model, int $price, int $qty, string $weight),
+        $this->price = $price;
+    }
+}   
+ */
 
 
 
