@@ -43,11 +43,11 @@ class User {
 
     public function insertCreditCard($cc)
     {
-        return $cc;
+        return 'Pagamento effettuato';
     }
 }
 class PremiumUser extends User{
-    protected $isPremium = true;
+    public $isPremium = true;
     protected $discount;
     public function discount()
     {
@@ -65,18 +65,14 @@ class CreditCard{
     protected $ccv;
     public $bool;
 
-    public function __construct($number, $expDate, $ccv,bool $bool)
+    public function __construct($number, $expDate, $ccv)
     {
         $this->number = $number;
         $this->expDate = $expDate;
         $this->ccv = $ccv;
-        $this->bool = $bool;
-        if ($this->bool == true){
-            return 'pagamento effettuato';
-        }   
     }
 }
-$card = new CreditCard(1234567890, '12/05/22', 123, true);
+new CreditCard(1234567890, '12/05/22', 123);
 
 $users = [
     
@@ -86,6 +82,7 @@ $users = [
     new PremiumUser('Maura', 'Stacchini', 'e223mail@test.com', 'maurastacch', '1234')
 
 ];
+
 /*   */
 
 ?>
@@ -108,10 +105,10 @@ $users = [
 
    <?php 
     foreach ($users as $user) :?>
-    
-    <h2>Ciao<?= $user[0]->name;?></h2>
+        <?php var_dump(method_exists($user, 'isPremium'));?>
+    <h1>ciao<?= $user->$name?></h1>
     <p><?=  $user->insertCreditCard($card)?></p>
-    <p>Hai diritto ad un <?= $user[3]->discount();?> di sconto</p>
+    
    <?php endforeach; ?>
 </body>
 </html>
