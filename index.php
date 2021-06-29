@@ -24,7 +24,7 @@ $prodotti = [
     $scarpe = new Prodotti ('Icerberg', 'Kakkoi', 215.99, 2, 'nd'),
 ];
 
-var_dump($prodotti);
+/* var_dump($prodotti); */
 
 
 class User {
@@ -92,23 +92,29 @@ $users = [
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>OOP 2</title>
 </head>
 <body>
+<div class="product">
     <?php 
-    foreach ($prodotti as $product) : ?>
-    <h1><?= $product->name;?></h1>
-    <p><?= $product->model;?></p>
-    <p><?= $product->price;?>$</p>
+        foreach ($prodotti as $product) : ?>
+        <h1><?= $product->name;?></h1>
+        <p><?= $product->model;?></p>
+        <p><?= $product->price;?>$</p>
 
     <?php endforeach; ?>
-
-   <?php 
-    foreach ($users as $user) :?>
-        <?php var_dump(method_exists($user, 'isPremium'));?>
-    <h1>ciao<?= $user->$name?></h1>
-    <p><?=  $user->insertCreditCard($card)?></p>
-    
-   <?php endforeach; ?>
+</div>
+   
+        <div class="user">
+            <?php 
+                foreach ($users as $user) :?>
+                    <!-- <?php var_dump(method_exists($user, 'isPremium'));?> -->
+                <h1>ciao<?= $user->$name?></h1>
+                <p><?=  $user->insertCreditCard($card)?></p>
+                
+            <?php endforeach; ?>
+        </div>
+   
 </body>
 </html>

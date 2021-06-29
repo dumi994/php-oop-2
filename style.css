@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.user{
+    width:50%;
+    background-color: grey;
+}
+.product{
+    width:50%;
+    background-color: rgb(41, 44, 41);
+    color:white ;
+}
