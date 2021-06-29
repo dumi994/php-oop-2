@@ -33,6 +33,7 @@ class User {
     protected $email;
     protected $username;
     protected $password;
+   
     public function __construct (string $name, string $lastname, string $email, string $username, string $password){
         $this->name = $name;
         $this->lastname = $lastname;
@@ -40,19 +41,25 @@ class User {
         $this->username = $username;
         $this->password = $password;
     }
-
+    public function getName(){
+        return $this->name;
+    }
     public function insertCreditCard($cc)
     {
         return 'Pagamento effettuato';
     }
+    
+    
 }
 class PremiumUser extends User{
-    public $isPremium = true;
+    protected $isPremium;
     protected $discount;
+
+    
     public function discount()
     {
        $this->discount = 20;
-       return $this->discount;
+           return $this->discount;
     }
     public function isPremium()
     {
@@ -76,10 +83,10 @@ new CreditCard(1234567890, '12/05/22', 123);
 
 $users = [
     
-    new User('Federico', 'Pieri', 'email@test.com', 'fedearn', '1234'),
     new User('Carlo', 'Burzi', 'emai123l@test.com', 'Carloburz', '1234'),
+    new PremiumUser('Federico', 'Pieri', 'email@test.com', 'fedearn', '1234'),
+    new User('Maura', 'Stacchini', 'e223mail@test.com', 'maurastacch', '1234'),
     new User('Giacomo', 'Pena', '123email@test.com', 'giacomopena', '1234'),
-    new PremiumUser('Maura', 'Stacchini', 'e223mail@test.com', 'maurastacch', '1234')
 
 ];
 
@@ -101,16 +108,15 @@ $users = [
         foreach ($prodotti as $product) : ?>
         <h1><?= $product->name;?></h1>
         <p><?= $product->model;?></p>
-        <p><?= $product->price;?>$</p>
+        <p><?= $product->price;?> &euro; </p>
 
     <?php endforeach; ?>
 </div>
    
         <div class="user">
             <?php 
-                foreach ($users as $user) :?>
-                    <!-- <?php var_dump(method_exists($user, 'isPremium'));?> -->
-                <h1>ciao<?= $user->$name?></h1>
+                foreach ($users as $user) :?>                    
+                <h1>Ciao <?= $user->getName()?> <?= method_exists($user, 'isPremium') ? '&star;' : ''?></h1>
                 <p><?=  $user->insertCreditCard($card)?></p>
                 
             <?php endforeach; ?>
