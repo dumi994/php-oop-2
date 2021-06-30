@@ -1,5 +1,8 @@
 <?php 
-    include __DIR__ . '/partials/classi.php';
+    include __DIR__ . '/partials/creditCard.php';
+    include __DIR__ . '/partials/user.php';
+    include __DIR__ . '/partials/prodotti.php';
+    include __DIR__ . '/partials/premiumuser.php';
     include __DIR__ . '/db/database.php';
 ?>
 
